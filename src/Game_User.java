@@ -187,7 +187,7 @@ public class Game_User implements ActionListener
     /*
      * displays simple text interface
      */
-    private void showMenu()
+    /*private void showMenu()
     {
         int choice;
         boolean quit;
@@ -245,8 +245,12 @@ public class Game_User implements ActionListener
         {
             System.out.println("Message: " + ex.getMessage());
         }
-    }
+    }*/
 
+
+    private void createTable(){
+        
+    }
 
     /*
      * inserts a League
