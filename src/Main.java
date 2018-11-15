@@ -656,6 +656,174 @@ public class Main implements ActionListener{
         return rtInfo;
     }
 
+    public void updatePassword(String username, String newPassword) {
+        try
+        {
+            ps = con.prepareStatement("UPDATE Game_User1 SET password = ? WHERE username = ?");
+
+            ps.setString(2, username);
+
+            ps.setString(1, newPassword);
+
+            int rowCount = ps.executeUpdate();
+            if (rowCount == 0)
+            {
+                System.out.println("\nGame_User1 " + username + " does not exist!");
+            }
+
+            con.commit();
+
+            ps.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
+
+    public void experienceUpdate(String username, int newExperience) {
+        try
+        {
+            ps = con.prepareStatement("UPDATE Normal_User SET password = ? WHERE username = ?");
+
+            ps.setString(2, username);
+
+            ps.setInt(1, newExperience);
+
+            int rowCount = ps.executeUpdate();
+            if (rowCount == 0)
+            {
+                System.out.println("\nNormal_User " + username + " does not exist!");
+            }
+
+            con.commit();
+
+            ps.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
+
+    public void rankUp(String username, int newRank) {
+        try
+        {
+            ps = con.prepareStatement("UPDATE Rank_User SET ranklvl = ? WHERE username = ?");
+
+            ps.setString(2, username);
+
+            ps.setInt(1, newRank);
+
+            int rowCount = ps.executeUpdate();
+            if (rowCount == 0)
+            {
+                System.out.println("\nRank_User " + username + " does not exist!");
+            }
+
+            con.commit();
+
+            ps.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
+
+    private String formatString(String input) {
+        int spaces = 20 - input.length();
+        for (int i = 0; i < spaces; i++) {
+            input.concat(" ");
+        }
+        return input;
+    }
+
+    public String clubInformation() {
+        String information = "";
+        try
+        {
+            stmt = con.createStatement();
+
+            rs = stmt.executeQuery("SELECT COUNT(username), AVG(ranklvl) FROM Rank_User GROUP BY clubid");
+
+                    // get info on ResultSet
+                    ResultSetMetaData rsmd = rs.getMetaData();
+
+            // get number of columns
+            int numCols = rsmd.getColumnCount();
+
+            // display column names;
+            for (int i = 0; i < numCols; i++)
+            {
+                String columnName = rsmd.getColumnName(i+1);
+                information.concat(formatString(columnName));
+            }
+
+            information.concat("\n");
+
+            while(rs.next())
+            {
+                information.concat(formatString(rs.getString("username")));
+                information.concat(formatString(rs.getString("ranklvl")));
+                information.concat(formatString(rs.getString("clubid")));
+                information.concat("\n");
+            }
+
+            // close the statement;
+            // the ResultSet will also be closed
+            stmt.close();
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+        }
+
+        return information;
+    }
+
     private String returnSpacesAccordingToLengthOfText(String text){
         int maxLength = 20;
         String spaces = "";
