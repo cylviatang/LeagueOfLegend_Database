@@ -21,7 +21,7 @@ public class Main implements ActionListener{
     // command line reader
     //private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-    private Connection con;
+    private static Connection con;
 
     // user is allowed 3 login attempts
     //private int loginAttempts = 0;
@@ -31,9 +31,17 @@ public class Main implements ActionListener{
     private JPasswordField passwordField;
     private JFrame mainFrame;*/
 
+
+
+    //private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
+    /*
+     * constructs login window and loads JDBC driver
+     */
     public static void main(String[] args) {
 
         //Dummy for testing
+        insertMatch_History(1, "test", "testChamp");
+        showTableWithName("Match_History");
 
         /*mainFrame = new JFrame("User Login");
 
@@ -130,12 +138,6 @@ public class Main implements ActionListener{
         }*/
 
     }
-
-    //private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
-    /*
-     * constructs login window and loads JDBC driver
-     */
-
 
 
 
@@ -332,18 +334,18 @@ public class Main implements ActionListener{
         }
     }*/
 
-    public void insertMatch_History(int matchHistoryID, String username, String champion)
+    public static void insertMatch_History(int matchHistoryID, String username, String champion)
     {
 
         PreparedStatement  ps;
 
         String iString = "INSERT INTO Match_History VALUES (";
-        iString.concat(Integer.toString(matchHistoryID));
-        iString.concat(", ");
-        iString.concat(username);
-        iString.concat(", ");
-        iString.concat(champion);
-        iString.concat(")");
+        iString = iString.concat(Integer.toString(matchHistoryID));
+        iString = iString.concat(", ");
+        iString = iString.concat(username);
+        iString = iString.concat(", ");
+        iString = iString.concat(champion);
+        iString = iString.concat(")");
 
 
 
@@ -441,10 +443,10 @@ public class Main implements ActionListener{
     /*
      * deletes a League
      */
-    public void deleteGame_User(String username)
+    public static void deleteGame_User(String username)
     {
         String iString = "DELETE FROM Game_User WHERE username = ";
-        iString.concat(username);
+        iString = iString.concat(username);
 
         PreparedStatement  ps;
 
@@ -491,14 +493,14 @@ public class Main implements ActionListener{
     /*
      * updates the name of a League
      */
-    public void updateClubs(int clubIDToUpdate, int newClubManagerID)
+    public static void updateClubs(int clubIDToUpdate, int newClubManagerID)
     {
         /*int                bid;
         String             bname;*/
         String iString = "UPDATE Clubs SET clubmanagerID = ";
-        iString.concat(Integer.toString(newClubManagerID));
-        iString.concat(" WHERE clubid = ");
-        iString.concat(Integer.toString(clubIDToUpdate));
+        iString = iString.concat(Integer.toString(newClubManagerID));
+        iString = iString.concat(" WHERE clubid = ");
+        iString = iString.concat(Integer.toString(clubIDToUpdate));
 
 
         PreparedStatement  ps;
@@ -549,7 +551,7 @@ public class Main implements ActionListener{
     /*
      * display information about Leaguees
      */
-    public String showTableWithName(String tname)
+    public static String showTableWithName(String tname)
     {
         /*String     bid;
         String     bname;
@@ -562,7 +564,7 @@ public class Main implements ActionListener{
         String rtInfo = "";
 
         String iString = "SELECT * FROM ";
-        iString.concat(tname);
+        iString = iString.concat(tname);
 
 
         try
@@ -580,7 +582,7 @@ public class Main implements ActionListener{
 
 
             //System.out.println(" ");
-            rtInfo.concat("\n");
+            rtInfo = rtInfo.concat("\n");
 
             ArrayList<String> columnNames = new ArrayList<String>();
             // display column names;
@@ -590,14 +592,14 @@ public class Main implements ActionListener{
 
                 //System.out.printf("%-15s", rsmd.getColumnName(i+1));
                 String columnName = rsmd.getColumnName(i+1);
-                rtInfo.concat(columnName);
+                rtInfo = rtInfo.concat(columnName);
                 columnNames.add(columnName);
-                rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
+                rtInfo = rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
 
             }
 
             //System.out.println(" ");
-            rtInfo.concat("\n");
+            rtInfo = rtInfo.concat("\n");
 
 
             while(rs.next())
@@ -609,12 +611,12 @@ public class Main implements ActionListener{
 
                 for (String columnName : columnNames){
                     String att = rs.getString(columnName);
-                    rtInfo.concat(att);
-                    rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
+                    rtInfo = rtInfo.concat(att);
+                    rtInfo = rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
 
                 }
 
-                rtInfo.concat("\n");
+                rtInfo = rtInfo.concat("\n");
 
                 /*bid = rs.getString("League_id");
                 System.out.printf("%-10.10s", bid);
@@ -658,7 +660,7 @@ public class Main implements ActionListener{
         return rtInfo;
     }
 
-    public void updatePassword(String username, String newPassword) {
+    public static void updatePassword(String username, String newPassword) {
         PreparedStatement  ps;
 
         try
@@ -699,7 +701,7 @@ public class Main implements ActionListener{
         }
     }
 
-    public void experienceUpdate(String username, int newExperience) {
+    public static void experienceUpdate(String username, int newExperience) {
         PreparedStatement  ps;
 
         try
@@ -740,7 +742,7 @@ public class Main implements ActionListener{
         }
     }
 
-    public void rankUp(String username, int newRank) {
+    public static void rankUp(String username, int newRank) {
         PreparedStatement  ps;
 
         try
@@ -781,15 +783,15 @@ public class Main implements ActionListener{
         }
     }
 
-    public String formatString(String input) {
+    public static String formatString(String input) {
         int spaces = 20 - input.length();
         for (int i = 0; i < spaces; i++) {
-            input.concat(" ");
+            input = input.concat(" ");
         }
         return input;
     }
 
-    public String clubInformation() {
+    public static String clubInformation() {
         String information = "";
         Statement stmt;
         ResultSet  rs;
@@ -810,17 +812,17 @@ public class Main implements ActionListener{
             for (int i = 0; i < numCols; i++)
             {
                 String columnName = rsmd.getColumnName(i+1);
-                information.concat(formatString(columnName));
+                information = information.concat(formatString(columnName));
             }
 
-            information.concat("\n");
+            information = information.concat("\n");
 
             while(rs.next())
             {
-                information.concat(formatString(rs.getString("username")));
-                information.concat(formatString(rs.getString("ranklvl")));
-                information.concat(formatString(rs.getString("clubid")));
-                information.concat("\n");
+                information = information.concat(formatString(rs.getString("username")));
+                information = information.concat(formatString(rs.getString("ranklvl")));
+                information = information.concat(formatString(rs.getString("clubid")));
+                information = information.concat("\n");
             }
 
             // close the statement;
@@ -835,19 +837,21 @@ public class Main implements ActionListener{
         return information;
     }
 
-    public String returnSpacesAccordingToLengthOfText(String text){
+    public static String returnSpacesAccordingToLengthOfText(String text){
         int maxLength = 20;
         String spaces = "";
         int textLength = text.length();
         int spacesToFill = maxLength - textLength;
 
         for (int i = 0; i < spacesToFill; i ++) {
-            spaces.concat(" ");
+            spaces = spaces.concat(" ");
 
         }
 
         return spaces;
     }
+
+
 }
 
 
