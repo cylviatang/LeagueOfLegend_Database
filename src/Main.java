@@ -547,7 +547,7 @@ public class Main implements ActionListener{
     /*
      * display information about Leaguees
      */
-    private void showTableWithName(String tname)
+    private String showTableWithName(String tname)
     {
         /*String     bid;
         String     bname;
@@ -578,7 +578,7 @@ public class Main implements ActionListener{
 
 
             //System.out.println(" ");
-            rtInfo.concat(" ");
+            rtInfo.concat("\n");
 
             ArrayList<String> columnNames = new ArrayList<String>();
             // display column names;
@@ -595,7 +595,7 @@ public class Main implements ActionListener{
             }
 
             //System.out.println(" ");
-            rtInfo.concat(" ");
+            rtInfo.concat("\n");
 
 
             while(rs.next())
@@ -605,7 +605,16 @@ public class Main implements ActionListener{
 
                 // simplified output formatting; truncation may occur
 
-                bid = rs.getString("League_id");
+                for (String columnName : columnNames){
+                    String att = rs.getString(columnName);
+                    rtInfo.concat(att);
+                    rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
+
+                }
+
+                rtInfo.concat("\n");
+
+                /*bid = rs.getString("League_id");
                 System.out.printf("%-10.10s", bid);
 
                 bname = rs.getString("League_name");
@@ -632,7 +641,7 @@ public class Main implements ActionListener{
                 else
                 {
                     System.out.printf("%-15.15s\n", bphone);
-                }
+                }*/
             }
 
             // close the statement;
@@ -643,6 +652,8 @@ public class Main implements ActionListener{
         {
             System.out.println("Message: " + ex.getMessage());
         }
+
+        return rtInfo;
     }
 
     private String returnSpacesAccordingToLengthOfText(String text){
