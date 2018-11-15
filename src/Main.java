@@ -19,12 +19,12 @@ public class Main implements ActionListener{
  */
 
     // command line reader
-    private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    //private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
     private Connection con;
 
     // user is allowed 3 login attempts
-    private int loginAttempts = 0;
+    //private int loginAttempts = 0;
 
     // components of the login window
     /*private JTextField usernameField;
@@ -129,7 +129,7 @@ public class Main implements ActionListener{
 
     }
 
-    private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
+    //private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
     /*
      * constructs login window and loads JDBC driver
      */
@@ -256,7 +256,7 @@ public class Main implements ActionListener{
 
 
     // my code
-    private boolean checkIfTableDoesNotExistWithName(String tname) {
+    /*private boolean checkIfTableDoesNotExistWithName(String tname) {
         for (int i = 0; i < tInfoList.size(); i ++){
             ArrayList<String> currentTable = tInfoList.get(i);
             if (tname.equals(currentTable.get(0))) { // a table with such name already exists
@@ -276,11 +276,11 @@ public class Main implements ActionListener{
 
         rString.concat(")");
         return rString;
-    }
+    }*/
 
 
     // GUI codes
-    private void iInsertTable(String tname){ // should be invoked when pressed InsertTable button
+    /*private void iInsertTable(String tname){ // should be invoked when pressed InsertTable button
 
         if(checkIfTableDoesNotExistWithName(tname)){
             //open another window
@@ -328,7 +328,7 @@ public class Main implements ActionListener{
                 System.exit(-1);
             }
         }
-    }
+    }*/
 
     private void insertMatch_History(int matchHistoryID, String username)
     {
