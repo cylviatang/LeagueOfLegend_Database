@@ -330,7 +330,7 @@ public class Main implements ActionListener{
         }
     }*/
 
-    private void insertMatch_History(int matchHistoryID, String username)
+    private void insertMatch_History(int matchHistoryID, String username, String champion)
     {
 
         PreparedStatement  ps;
@@ -339,6 +339,8 @@ public class Main implements ActionListener{
         iString.concat(Integer.toString(matchHistoryID));
         iString.concat(", ");
         iString.concat(username);
+        iString.concat(", ");
+        iString.concat(champion);
         iString.concat(")");
 
 
@@ -545,21 +547,27 @@ public class Main implements ActionListener{
     /*
      * display information about Leaguees
      */
-    private void showLeague()
+    private void showTableWithName(String tname)
     {
-        String     bid;
+        /*String     bid;
         String     bname;
         String     baddr;
         String     bcity;
-        String     bphone;
+        String     bphone;*/
         Statement stmt;
         ResultSet  rs;
+        //ArrayList<ArrayList<String>> rtInfo;
+        String rtInfo = "";
+
+        String iString = "SELECT * FROM ";
+        iString.concat(tname);
+
 
         try
         {
             stmt = con.createStatement();
 
-            rs = stmt.executeQuery("SELECT * FROM League");
+            rs = stmt.executeQuery(iString);
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -567,17 +575,28 @@ public class Main implements ActionListener{
             // get number of columns
             int numCols = rsmd.getColumnCount();
 
-            System.out.println(" ");
 
+
+            //System.out.println(" ");
+            rtInfo.concat(" ");
+
+            ArrayList<String> columnNames = new ArrayList<String>();
             // display column names;
             for (int i = 0; i < numCols; i++)
             {
                 // get column name and print it
 
-                System.out.printf("%-15s", rsmd.getColumnName(i+1));
+                //System.out.printf("%-15s", rsmd.getColumnName(i+1));
+                String columnName = rsmd.getColumnName(i+1);
+                rtInfo.concat(columnName);
+                columnNames.add(columnName);
+                rtInfo.concat("     ");
+
             }
 
-            System.out.println(" ");
+            //System.out.println(" ");
+            rtInfo.concat(" ");
+
 
             while(rs.next())
             {
