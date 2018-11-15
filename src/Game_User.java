@@ -32,7 +32,7 @@ public class Game_User implements ActionListener
     private JFrame mainFrame;
 
 
-    private ArrayList<ArrayList<String>> tInfo; // list of the tables created; It is the list of list of informations about each table
+    private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
     /*
      * constructs login window and loads JDBC driver
      */
@@ -251,31 +251,64 @@ public class Game_User implements ActionListener
     }*/
 
 
-    private void createTable(){
-        String tname = "";
-
-
-
-        //tnames.add(tname);
-
-    }
 
     /*
      * inserts a League
      */
 
-    private void insertTable(String tname){
+    private void iInsertTable(String tname){ // should be invoked when pressed InsertTable button
 
-        getAttributesOfTableName(tname); //with this list of attributes, make GUI that allows the user to input values to each attribute and press insert button to go to insertLeague()
+        if(checkIfTableDoesNotExistWithName(tname)){
+            //open another window
+        } else {
+            System.out.print("Error:Table with that name already exists");
+            // does not do anything;
+
+        }
+
+
+
+        //getAttributesOfTableName(tname); //with this list of attributes, make GUI that allows the user to input values to each attribute and press insert button to go to insertLeague()
 
     }
-    private void insertLeague()
+
+    private void fInsertTable(ArrayList<String> tInfo){ //assuming that the first element of tInfo is the name of the table
+
+        PreparedStatement  ps;
+
+        String pString = "CREATE TABLE ? (";
+        pString.concat(createStringForPSInsertWithNumberOfAttribute(tInfo.size()));
+        pString.concat(")");
+
+        try {
+
+            ps = con.prepareStatement(pString);
+
+
+            for (int i = 0; i < tInfo.size(); i++) {
+                ps.setString(i + 1, tInfo.get(i)); //i+1 becuse setString because parameter from 1 not 0;
+
+            }
+
+        } catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+            try
+            {
+                // undo the insert
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
+
+    private void insertLeague(ArrayList<String> tInfo)
     {
-        int                bid;
-        String             bname;
-        String             baddr;
-        String             bcity;
-        int                bphone;
+
         PreparedStatement  ps;
 
         try
@@ -284,11 +317,14 @@ public class Game_User implements ActionListener
 
 
 
-
+            createStringForPSInsertWithNumberOfAttribute(tInfo.size());
 
             ps = con.prepareStatement("INSERT INTO ? VALUES (?,?,?,?,?)");
 
-            ps.setString(1, tname);
+            for (int i = 0; i < tInfo.size(); i ++){
+                ps.setString(i+1, tInfo.get(i)); //i+1 becuse setString because parameter from 1 not 0;
+
+            }
 
             /*
             System.out.print("\nLeague ID: ");
@@ -334,10 +370,10 @@ public class Game_User implements ActionListener
 
             ps.close();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             System.out.println("IOException!");
-        }
+        }*/
         catch (SQLException ex)
         {
             System.out.println("Message: " + ex.getMessage());
@@ -354,16 +390,38 @@ public class Game_User implements ActionListener
         }
     }
 
-    private ArrayList<String> getAttributesOfTableName(String tname){
-        for (int i = 0; i < tInfo.size(); i ++) {
-            ArrayList<String> currentTable = tInfo.get(i);
+    /*private ArrayList<String> getAttributesOfTableName(String tname){
+        for (int i = 0; i < tInfoList.size(); i ++) {
+            ArrayList<String> currentTable = tInfoList.get(i);
             if (tname.equals(currentTable.get(0))) { // the name of each table
                 return currentTable;
             }
         }
         return new ArrayList<String>(); //table of given name does not exist
+    }*/
+
+    private boolean checkIfTableDoesNotExistWithName(String tname) {
+        for (int i = 0; i < tInfoList.size(); i ++){
+            ArrayList<String> currentTable = tInfoList.get(i);
+            if (tname.equals(currentTable.get(0))) { // a table with such name already exists
+                return false;
+            }
+        }
+        return true;
     }
 
+    private String createStringForPSInsertWithNumberOfAttribute(int nAttr){ // assuming that nAttr will always be larger than 0;
+        String rString = "(?";
+
+        for (int i = 1; i < nAttr; i ++){ //starting from 1 because we are bypassing the very first one
+            rString.concat(",?");
+            rString.concat(",?");//compensating for the dataType
+
+        }
+
+        rString.concat(")");
+        return rString;
+    }
 
     /*
      * deletes a League
