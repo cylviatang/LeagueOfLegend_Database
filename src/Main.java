@@ -439,7 +439,7 @@ public class Main implements ActionListener{
     /*
      * deletes a League
      */
-    private void deleteGame_USer(String username)
+    private void deleteGame_User(String username)
     {
         String iString = "DELETE FROM Game_User WHERE username = ";
         iString.concat(username);
@@ -590,7 +590,7 @@ public class Main implements ActionListener{
                 String columnName = rsmd.getColumnName(i+1);
                 rtInfo.concat(columnName);
                 columnNames.add(columnName);
-                rtInfo.concat("     ");
+                rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
 
             }
 
@@ -643,6 +643,20 @@ public class Main implements ActionListener{
         {
             System.out.println("Message: " + ex.getMessage());
         }
+    }
+
+    private String returnSpacesAccordingToLengthOfText(String text){
+        int maxLength = 20;
+        String spaces = "";
+        int textLength = text.length();
+        int spacesToFill = maxLength - textLength;
+
+        for (int i = 0; i < spacesToFill; i ++) {
+            spaces.concat(" ");
+
+        }
+
+        return spaces;
     }
 }
 
