@@ -657,6 +657,8 @@ public class Main implements ActionListener{
     }
 
     public void updatePassword(String username, String newPassword) {
+        PreparedStatement  ps;
+
         try
         {
             ps = con.prepareStatement("UPDATE Game_User1 SET password = ? WHERE username = ?");
@@ -675,10 +677,10 @@ public class Main implements ActionListener{
 
             ps.close();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             System.out.println("IOException!");
-        }
+        }*/
         catch (SQLException ex)
         {
             System.out.println("Message: " + ex.getMessage());
@@ -696,6 +698,8 @@ public class Main implements ActionListener{
     }
 
     public void experienceUpdate(String username, int newExperience) {
+        PreparedStatement  ps;
+
         try
         {
             ps = con.prepareStatement("UPDATE Normal_User SET password = ? WHERE username = ?");
@@ -714,10 +718,10 @@ public class Main implements ActionListener{
 
             ps.close();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             System.out.println("IOException!");
-        }
+        }*/
         catch (SQLException ex)
         {
             System.out.println("Message: " + ex.getMessage());
@@ -735,6 +739,8 @@ public class Main implements ActionListener{
     }
 
     public void rankUp(String username, int newRank) {
+        PreparedStatement  ps;
+
         try
         {
             ps = con.prepareStatement("UPDATE Rank_User SET ranklvl = ? WHERE username = ?");
@@ -753,10 +759,10 @@ public class Main implements ActionListener{
 
             ps.close();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             System.out.println("IOException!");
-        }
+        }*/
         catch (SQLException ex)
         {
             System.out.println("Message: " + ex.getMessage());
@@ -783,6 +789,9 @@ public class Main implements ActionListener{
 
     public String clubInformation() {
         String information = "";
+        Statement stmt;
+        ResultSet  rs;
+
         try
         {
             stmt = con.createStatement();
