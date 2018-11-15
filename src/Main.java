@@ -330,25 +330,33 @@ public class Main implements ActionListener{
         }
     }
 
-    private void insertLeague(ArrayList<String> tInfo)
+    private void insertLeague(int matchHistoryID, String username)
     {
 
         PreparedStatement  ps;
+
+        String iString = "INSERT INTO Match_History VALUES (";
+        iString.concat(Integer.toString(matchHistoryID));
+        iString.concat(", ");
+        iString.concat(username);
+        iString.concat(")");
+
+
 
         try
         {
 
 
+            //createStringForPSInsertWithNumberOfAttribute(tInfo.size());
 
 
-            createStringForPSInsertWithNumberOfAttribute(tInfo.size());
 
-            ps = con.prepareStatement("INSERT INTO ? VALUES (?,?,?,?,?)");
+            ps = con.prepareStatement(iString);
 
-            for (int i = 0; i < tInfo.size(); i ++){
+            /*for (int i = 0; i < tInfo.size(); i ++){
                 ps.setString(i+1, tInfo.get(i)); //i+1 becuse setString because parameter from 1 not 0;
 
-            }
+            }*/
 
             /*
             System.out.print("\nLeague ID: ");
