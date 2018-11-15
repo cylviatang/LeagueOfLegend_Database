@@ -33,6 +33,8 @@ public class Main implements ActionListener{
 
     public static void main(String[] args) {
 
+        //Dummy for testing
+
         /*mainFrame = new JFrame("User Login");
 
         JLabel usernameLabel = new JLabel("Enter username: ");
@@ -140,7 +142,7 @@ public class Main implements ActionListener{
     /*
      * connects to Oracle database named ug using user supplied username and password
      */
-    private boolean connect(String username, String password)
+    public boolean connect(String username, String password)
     {
         String connectURL = "jdbc:oracle:thin:@dbhost.ugrad.cs.ubc.ca:1522:ug";
 
@@ -330,7 +332,7 @@ public class Main implements ActionListener{
         }
     }*/
 
-    private void insertMatch_History(int matchHistoryID, String username, String champion)
+    public void insertMatch_History(int matchHistoryID, String username, String champion)
     {
 
         PreparedStatement  ps;
@@ -439,7 +441,7 @@ public class Main implements ActionListener{
     /*
      * deletes a League
      */
-    private void deleteGame_User(String username)
+    public void deleteGame_User(String username)
     {
         String iString = "DELETE FROM Game_User WHERE username = ";
         iString.concat(username);
@@ -489,7 +491,7 @@ public class Main implements ActionListener{
     /*
      * updates the name of a League
      */
-    private void updateClubs(int clubIDToUpdate, int newClubManagerID)
+    public void updateClubs(int clubIDToUpdate, int newClubManagerID)
     {
         /*int                bid;
         String             bname;*/
@@ -547,7 +549,7 @@ public class Main implements ActionListener{
     /*
      * display information about Leaguees
      */
-    private String showTableWithName(String tname)
+    public String showTableWithName(String tname)
     {
         /*String     bid;
         String     bname;
@@ -779,7 +781,7 @@ public class Main implements ActionListener{
         }
     }
 
-    private String formatString(String input) {
+    public String formatString(String input) {
         int spaces = 20 - input.length();
         for (int i = 0; i < spaces; i++) {
             input.concat(" ");
@@ -833,7 +835,7 @@ public class Main implements ActionListener{
         return information;
     }
 
-    private String returnSpacesAccordingToLengthOfText(String text){
+    public String returnSpacesAccordingToLengthOfText(String text){
         int maxLength = 20;
         String spaces = "";
         int textLength = text.length();
