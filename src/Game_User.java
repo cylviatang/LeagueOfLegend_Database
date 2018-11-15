@@ -7,6 +7,8 @@ import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import oracle.jdbc.*;
 
 
@@ -30,6 +32,7 @@ public class Game_User implements ActionListener
     private JFrame mainFrame;
 
 
+    private ArrayList<ArrayList<String>> tInfo; // list of the tables created; It is the list of list of informations about each table
     /*
      * constructs login window and loads JDBC driver
      */
@@ -163,7 +166,7 @@ public class Game_User implements ActionListener
             // if the username and password are valid,
             // remove the login window and display a text menu
             mainFrame.dispose();
-            showMenu();
+            showLeague();
         }
         else
         {
@@ -249,12 +252,23 @@ public class Game_User implements ActionListener
 
 
     private void createTable(){
-        
+        String tname = "";
+
+
+
+        //tnames.add(tname);
+
     }
 
     /*
      * inserts a League
      */
+
+    private void insertTable(String tname){
+
+        getAttributesOfTableName(tname); //with this list of attributes, make GUI that allows the user to input values to each attribute and press insert button to go to insertLeague()
+
+    }
     private void insertLeague()
     {
         int                bid;
@@ -266,31 +280,40 @@ public class Game_User implements ActionListener
 
         try
         {
-            ps = con.prepareStatement("INSERT INTO League VALUES (?,?,?,?,?)");
 
+
+
+
+
+
+            ps = con.prepareStatement("INSERT INTO ? VALUES (?,?,?,?,?)");
+
+            ps.setString(1, tname);
+
+            /*
             System.out.print("\nLeague ID: ");
             bid = Integer.parseInt(in.readLine());
-            ps.setInt(1, bid);
+            ps.setInt(2, bid);
 
             System.out.print("\nLeague Name: ");
             bname = in.readLine();
-            ps.setString(2, bname);
+            ps.setString(3, bname);
 
             System.out.print("\nLeague Address: ");
             baddr = in.readLine();
 
             if (baddr.length() == 0)
             {
-                ps.setString(3, null);
+                ps.setString(4, null);
             }
             else
             {
-                ps.setString(3, baddr);
+                ps.setString(4, baddr);
             }
 
             System.out.print("\nLeague City: ");
             bcity = in.readLine();
-            ps.setString(4, bcity);
+            ps.setString(5, bcity);
 
             System.out.print("\nLeague Phone: ");
             String phoneTemp = in.readLine();
@@ -303,7 +326,7 @@ public class Game_User implements ActionListener
                 bphone = Integer.parseInt(phoneTemp);
                 ps.setInt(5, bphone);
             }
-
+*/
             ps.executeUpdate();
 
             // commit work
@@ -329,6 +352,16 @@ public class Game_User implements ActionListener
                 System.exit(-1);
             }
         }
+    }
+
+    private ArrayList<String> getAttributesOfTableName(String tname){
+        for (int i = 0; i < tInfo.size(); i ++) {
+            ArrayList<String> currentTable = tInfo.get(i);
+            if (tname.equals(currentTable.get(0))) { // the name of each table
+                return currentTable;
+            }
+        }
+        return new ArrayList<String>(); //table of given name does not exist
     }
 
 
