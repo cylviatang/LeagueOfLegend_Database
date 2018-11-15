@@ -330,7 +330,7 @@ public class Main implements ActionListener{
         }
     }
 
-    private void insertLeague(int matchHistoryID, String username)
+    private void insertMatch_History(int matchHistoryID, String username)
     {
 
         PreparedStatement  ps;
@@ -437,16 +437,18 @@ public class Main implements ActionListener{
     /*
      * deletes a League
      */
-    private void deleteLeague()
+    private void deleteGame_USer(String username)
     {
-        int                bid;
+        String iString = "DELETE FROM Game_User WHERE username = ";
+        iString.concat(username);
+
         PreparedStatement  ps;
 
         try
         {
-            ps = con.prepareStatement("DELETE FROM League WHERE League_id = ?");
+            ps = con.prepareStatement( iString);
 
-            System.out.print("\nLeague ID: ");
+            /*System.out.print("\nLeague ID: ");
             bid = Integer.parseInt(in.readLine());
             ps.setInt(1, bid);
 
@@ -455,16 +457,16 @@ public class Main implements ActionListener{
             if (rowCount == 0)
             {
                 System.out.println("\nLeague " + bid + " does not exist!");
-            }
+            }*/
 
             con.commit();
 
             ps.close();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             System.out.println("IOException!");
-        }
+        }*/
         catch (SQLException ex)
         {
             System.out.println("Message: " + ex.getMessage());
@@ -485,17 +487,23 @@ public class Main implements ActionListener{
     /*
      * updates the name of a League
      */
-    private void updateLeague()
+    private void updateClubs(int clubIDToUpdate, int newClubManagerID)
     {
-        int                bid;
-        String             bname;
+        /*int                bid;
+        String             bname;*/
+        String iString = "UPDATE Clubs SET clubmanagerID = ";
+        iString.concat(Integer.toString(newClubManagerID));
+        iString.concat(" WHERE clubid = ");
+        iString.concat(Integer.toString(clubIDToUpdate));
+
+
         PreparedStatement  ps;
 
         try
         {
-            ps = con.prepareStatement("UPDATE League SET League_name = ? WHERE League_id = ?");
+            ps = con.prepareStatement(iString);
 
-            System.out.print("\nLeague ID: ");
+            /*System.out.print("\nLeague ID: ");
             bid = Integer.parseInt(in.readLine());
             ps.setInt(2, bid);
 
@@ -507,16 +515,16 @@ public class Main implements ActionListener{
             if (rowCount == 0)
             {
                 System.out.println("\nLeague " + bid + " does not exist!");
-            }
+            }*/
 
             con.commit();
 
             ps.close();
         }
-        catch (IOException e)
+        /*catch (IOException e)
         {
             System.out.println("IOException!");
-        }
+        }*/
         catch (SQLException ex)
         {
             System.out.println("Message: " + ex.getMessage());
