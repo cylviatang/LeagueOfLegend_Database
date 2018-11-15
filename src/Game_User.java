@@ -252,10 +252,31 @@ public class Game_User implements ActionListener
 
 
 
-    /*
-     * inserts a League
-     */
+    // my code
+    private boolean checkIfTableDoesNotExistWithName(String tname) {
+        for (int i = 0; i < tInfoList.size(); i ++){
+            ArrayList<String> currentTable = tInfoList.get(i);
+            if (tname.equals(currentTable.get(0))) { // a table with such name already exists
+                return false;
+            }
+        }
+        return true;
+    }
 
+    private String createStringForPSInsertWithNumberOfAttribute(int nAttr){ // assuming that nAttr will always be larger than 0;
+        String rString = "(? ?";
+
+        for (int i = 1; i < nAttr; i ++){ //starting from 1 because we are bypassing the very first one
+            rString.concat(",? ?");//compensating for the dataType
+
+        }
+
+        rString.concat(")");
+        return rString;
+    }
+
+
+    // GUI codes
     private void iInsertTable(String tname){ // should be invoked when pressed InsertTable button
 
         if(checkIfTableDoesNotExistWithName(tname)){
@@ -272,7 +293,7 @@ public class Game_User implements ActionListener
 
     }
 
-    private void fInsertTable(ArrayList<String> tInfo){ //assuming that the first element of tInfo is the name of the table
+    private void fInsertTable(ArrayList<String> tInfo){ //assuming that the first element of tInfo is the name of the table //tInfo should also contain dataType information
 
         PreparedStatement  ps;
 
@@ -400,28 +421,7 @@ public class Game_User implements ActionListener
         return new ArrayList<String>(); //table of given name does not exist
     }*/
 
-    private boolean checkIfTableDoesNotExistWithName(String tname) {
-        for (int i = 0; i < tInfoList.size(); i ++){
-            ArrayList<String> currentTable = tInfoList.get(i);
-            if (tname.equals(currentTable.get(0))) { // a table with such name already exists
-                return false;
-            }
-        }
-        return true;
-    }
 
-    private String createStringForPSInsertWithNumberOfAttribute(int nAttr){ // assuming that nAttr will always be larger than 0;
-        String rString = "(?";
-
-        for (int i = 1; i < nAttr; i ++){ //starting from 1 because we are bypassing the very first one
-            rString.concat(",?");
-            rString.concat(",?");//compensating for the dataType
-
-        }
-
-        rString.concat(")");
-        return rString;
-    }
 
     /*
      * deletes a League
