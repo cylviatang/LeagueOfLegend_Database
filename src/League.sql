@@ -156,8 +156,16 @@ insert into Game_User1 values('cylviaT','login_c','123abc');
 insert into Game_User1 values('cloeM','login_cl','456def');
 insert into Game_User1 values('jodhB','login_jo','789ghi');
 insert into Game_User1 values('jayJ','login_ja','101jkl');
-insert into Game_User1 values('joeyJ','login_joey','202yjdks');
+insert into Game_User1 values('joeyZ','login_joey','202yjdks');
 insert into Game_User1 values('David','login_david','639jfeidlskdf');
+insert into Game_User1 values('Crystal','login_crystal','485656earsfd');
+insert into Game_User1 values('Kevin','login_kevin','11254fafdsed');
+insert into Game_User1 values('Vivian','login_vivian','d34225rsff');
+insert into Game_User1 values('Poppy','login_poppy','789gfsdgdr');
+insert into Game_User1 values('Oris','login_oris','753945fdedhk');
+insert into Game_User1 values('Fiona','login_fiona','6333fjlvms');
+
+
 
 commit;
 
@@ -193,13 +201,22 @@ commit;
 -- normal_User
 insert into normal_User values ('cloeM',15);
 insert into normal_User values ('cylviaT',10);
+insert into normal_User values ('Crystal',20);
+insert into normal_User values ('Fiona',17);
+
 commit;
 
 -- rank_User
 insert into rank_User values ('jayJ',50,1001);
 insert into rank_User values ('jodhB',60,1002);
-commit;
+insert into rank_User values ('joeyZ',65,1003);
+insert into rank_User values ('David',89,1004);
 
+insert into rank_User values ('Oris',73,1002);
+insert into rank_User values ('Poppy',83,1002);
+insert into rank_User values ('Vivian',90,1004);
+insert into rank_User values ('Kevin',64,1004);
+commit;
 
 -- owns
 insert into Owns values ('jayJ',100);
