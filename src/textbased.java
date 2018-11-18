@@ -227,7 +227,7 @@ public class textbased implements ActionListener {
                         updatePassword();
                         break;
                     case 10:
-                        clubInformation();
+                        showClubInfo();
                         break;
                     case 11:
                         viewNAEvents();
@@ -560,23 +560,19 @@ public class textbased implements ActionListener {
 
     //Deliverable 7
 
-    public String formatString(String input) {
-        int spaces = 20 - input.length();
-        for (int i = 0; i < spaces; i++) {
-            input.concat(" ");
-        }
-        return input;
-    }
+    private void showClubInfo()
+    {
+        String     clubid;
+        String     count;
+        String     average;
+        Statement  stmt;
+        ResultSet  rs;
 
-    public String clubInformation() {
-        String information = "";
-        Statement stmt;
-        ResultSet rs;
-
-        try {
+        try
+        {
             stmt = con.createStatement();
 
-            rs = stmt.executeQuery("SELECT COUNT(username), AVG(ranklvl) FROM Rank_User GROUP BY clubid");
+            rs = stmt.executeQuery("SELECT clubid, COUNT(username) AS count, AVG(ranklvl) AS average FROM Rank_User GROUP BY clubid");
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -584,29 +580,50 @@ public class textbased implements ActionListener {
             // get number of columns
             int numCols = rsmd.getColumnCount();
 
+            System.out.println(" ");
+
             // display column names;
-            for (int i = 0; i < numCols; i++) {
-                String columnName = rsmd.getColumnName(i + 1);
-                information.concat(formatString(columnName));
+            for (int i = 0; i < numCols; i++)
+            {
+                // get column name and print it
+
+                System.out.printf("%-15s", rsmd.getColumnName(i+1));
             }
 
-            information.concat("\n");
+            System.out.println(" ");
 
-            while (rs.next()) {
-                information.concat(formatString(rs.getString("username")));
-                information.concat(formatString(rs.getString("ranklvl")));
-                information.concat(formatString(rs.getString("clubid")));
-                information.concat("\n");
+            while(rs.next())
+            {
+                // for display purposes get everything from Oracle
+                // as a string
+
+                // simplified output formatting; truncation may occur
+
+                clubid = rs.getString("clubid");
+                System.out.printf("%-15.15s", clubid);
+
+                count = rs.getString("count");
+                System.out.printf("%-20.20s", count);
+
+                average = rs.getString("average");
+                if (rs.wasNull())
+                {
+                    System.out.printf("%-20.20s\n", " ");
+                }
+                else
+                {
+                    System.out.printf("%-20.20s\n", average);
+                }
             }
 
             // close the statement;
             // the ResultSet will also be closed
             stmt.close();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             System.out.println("Message: " + ex.getMessage());
         }
-
-        return information;
     }
 
     /*
