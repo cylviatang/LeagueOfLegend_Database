@@ -263,9 +263,10 @@ public class textbased implements ActionListener {
         int matchhistoryid;
         String username;
         PreparedStatement ps;
+        int championID;
 
         try {
-            ps = con.prepareStatement("INSERT INTO Match_History VALUES (?,?)");
+            ps = con.prepareStatement("INSERT INTO Match_History VALUES (?,?,?)");
 
             System.out.print("\nMatch History ID: ");
             matchhistoryid = Integer.parseInt(in.readLine());
@@ -274,6 +275,10 @@ public class textbased implements ActionListener {
             System.out.print("\nUsername: ");
             username = in.readLine();
             ps.setString(2, username);
+
+            System.out.print("\nChampionID ");
+            championID = Integer.parseInt(in.readLine());
+            ps.setInt(3, championID);
 
             ps.executeUpdate();
 
@@ -304,17 +309,21 @@ public class textbased implements ActionListener {
         PreparedStatement ps;
 
         try {
-            ps = con.prepareStatement("DELETE FROM Game_User1 WHERE username = ?");
+            String psString = "DELETE FROM Game_User1 WHERE username ='";
 
             System.out.print("\nUsername: ");
             username = in.readLine();
-            ps.setString(1, username);
+            psString = psString+username+"'";
+            System.out.print(psString);
+            ps = con.prepareStatement(psString);
+
+            ps.executeUpdate();
 
             int rowCount = ps.executeUpdate();
 
-            if (rowCount == 0) {
+            /*if (rowCount == 0) {
                 System.out.println("\nUser " + username + " does not exist!");
-            }
+            }*/
 
             con.commit();
 
