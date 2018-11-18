@@ -180,7 +180,6 @@ public class League_Database implements ActionListener
         JTextField insertChampionID = new JTextField(10);
 
         JButton insertIntoMarchHistory = new JButton("Insert Into Match History");
-        //insertIntoMarchHistory.setEnabled(false);
 
         //to use the grid bag layout manager
         GridBagLayout gbLeague = new GridBagLayout();
@@ -259,16 +258,16 @@ public class League_Database implements ActionListener
         insertIntoMarchHistory.addActionListener(this);
 
 
+        //insertIntoMarchHistory.setEnabled(true);
 
-       /* insertIntoMarchHistory.setEnabled(true);
-        String resultMID = insertMatchHistoryID.getText();
-        String resultUserName = insertUserName.getText();
-        String resultChamID = insertChampionID.getText();
 
-        if(insertIntoMarchHistory.isEnabled()){
+        if(insertIntoMarchHistory.getModel().isPressed()){
             SQLfunc sq = new SQLfunc(con);
+            String resultMID = insertMatchHistoryID.getText();
+            String resultUserName = insertUserName.getText();
+            String resultChamID = insertChampionID.getText();
             sq.insertMatch_History(resultMID,resultUserName,resultChamID);
-        }*/
+        }
 
     }
     /*
