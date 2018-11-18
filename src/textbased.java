@@ -776,4 +776,9 @@ public class textbased implements ActionListener {
         }
     }
 
+    public static void main(String args[])
+    {
+        textbased db = new textbased();
+    }
+
 }
