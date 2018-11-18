@@ -16,12 +16,7 @@ public class SQLfunc {
         //insert into Match_History values (10000,'jayJ',100);
         String iString = "INSERT INTO Match_History VALUES ("+matchHistoryID+",'"+username+"',"+championid+")";
         System.out.println(iString);
-        /*iString.concat(Integer.toString(matchHistoryID));
-        iString.concat(", ");
-        iString.concat(username);
-        iString.concat(", ");
-        iString.concat(champion);
-        iString.concat(")");*/
+
         try {
             ps = connec.prepareStatement(iString);
             ps.executeUpdate();

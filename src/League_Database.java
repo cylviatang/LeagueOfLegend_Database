@@ -267,6 +267,7 @@ public class League_Database implements ActionListener
             String resultUserName = insertUserName.getText();
             String resultChamID = insertChampionID.getText();
             sq.insertMatch_History(resultMID,resultUserName,resultChamID);
+            System.out.println("The message had been successfully inserted");
         }
 
     }
