@@ -202,9 +202,9 @@ public class textbased implements ActionListener
 	    while (!quit)
 	    {
 		System.out.print("\n\nPlease choose one of the following: \n");
-		System.out.print("1.  Insert branch\n");
-		System.out.print("2.  Delete branch\n");
-		System.out.print("3.  Update branch\n");
+		System.out.print("1.  Insert Match\n");
+		System.out.print("2.  Delete User\n");
+		System.out.print("3.  Update Club Manager ID\n");
 		System.out.print("4.  Show branch\n");
 		System.out.print("5.  Quit\n>> ");
 
@@ -249,7 +249,7 @@ public class textbased implements ActionListener
 
 
     /*
-     * inserts a branch
+     * Deliverable 2
      */ 
     private void insertMatch()
     {
@@ -298,7 +298,7 @@ public class textbased implements ActionListener
 
 
     /*
-     * deletes a branch
+     * Deliverable 3
      */ 
     private void deleteUser()
     {
@@ -346,7 +346,7 @@ public class textbased implements ActionListener
     
 
     /*
-     * updates the name of a branch
+     * Deliverable 4
      */ 
     private void updateClubManagerID()
     {
@@ -396,7 +396,158 @@ public class textbased implements ActionListener
 	}	
     }
 
-    
+    /*
+     * Deliverable 8
+     */
+    private void updateUserLevel()
+	{
+		String          username;
+		int             ranklvl;
+		PreparedStatement  ps;
+
+		try
+		{
+			ps = con.prepareStatement("UPDATE Rank_User SET ranklvl = ? WHERE username = ?");
+
+			System.out.print("\nUsername: ");
+			username = in.readLine();
+			ps.setString(2, username);
+
+			System.out.print("\nNew rank level: ");
+			ranklvl = Integer.parseInt(in.readLine());
+			ps.setInt(1, ranklvl);
+
+			int rowCount = ps.executeUpdate();
+			if (rowCount == 0)
+			{
+				System.out.println("\nUser " + username + " does not exist!");
+			}
+
+			con.commit();
+
+			ps.close();
+		}
+		catch (IOException e)
+		{
+			System.out.println("IOException!");
+		}
+		catch (SQLException ex)
+		{
+			System.out.println("Message: " + ex.getMessage());
+
+			try
+			{
+				con.rollback();
+			}
+			catch (SQLException ex2)
+			{
+				System.out.println("Message: " + ex2.getMessage());
+				System.exit(-1);
+			}
+		}
+	}
+
+    /*
+     * Deliverable 9
+     */
+    private void updateUserExperience()
+    {
+        String          username;
+        int             experiencelvl;
+        PreparedStatement  ps;
+
+        try
+        {
+            ps = con.prepareStatement("UPDATE Normal_User SET experiencelvl = ? WHERE username = ?");
+
+            System.out.print("\nUsername: ");
+            username = in.readLine();
+            ps.setString(2, username);
+
+            System.out.print("\nNew experience level: ");
+            experiencelvl = Integer.parseInt(in.readLine());
+            ps.setInt(1, experiencelvl);
+
+            int rowCount = ps.executeUpdate();
+            if (rowCount == 0)
+            {
+                System.out.println("\nUser " + username + " does not exist!");
+            }
+
+            con.commit();
+
+            ps.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
+
+    /*
+     * Deliverable 10
+     */
+    private void updatePassword()
+    {
+        String          username;
+        String          password;
+        PreparedStatement  ps;
+
+        try
+        {
+            ps = con.prepareStatement("UPDATE Game_User1 SET password = ? WHERE username = ?");
+
+            System.out.print("\nUsername: ");
+            username = in.readLine();
+            ps.setString(2, username);
+
+            System.out.print("\nNew password: ");
+            password = in.readLine();
+            ps.setString(1, password);
+
+            int rowCount = ps.executeUpdate();
+            if (rowCount == 0)
+            {
+                System.out.println("\nUser " + username + " does not exist!");
+            }
+
+            con.commit();
+
+            ps.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
 
     
     /*
