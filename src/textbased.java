@@ -205,8 +205,13 @@ public class textbased implements ActionListener
 		System.out.print("1.  Insert Match\n");
 		System.out.print("2.  Delete User\n");
 		System.out.print("3.  Update Club Manager ID\n");
-		System.out.print("4.  Show branch\n");
-		System.out.print("5.  Quit\n>> ");
+		System.out.print("4. \n");
+		System.out.print("5. \n");
+		System.out.print("6. \n");
+		System.out.print("7.  Update rank \n");
+		System.out.print("8.  Update experience level \n");
+		System.out.print("9.  Update password \n");
+		System.out.print("10. Quit\n>> ");
 
 		choice = Integer.parseInt(in.readLine());
 		
@@ -217,8 +222,10 @@ public class textbased implements ActionListener
 		   case 1:  insertMatch(); break;
 		   case 2:  deleteUser(); break;
 		   case 3:  updateClubManagerID(); break;
-		   case 4:  showBranch(); break;
-		   case 5:  quit = true;
+		   case 7:  updateUserLevel(); break;
+		   case 8:  updateUserExperience(); break;
+		   case 9:  updatePassword(); break;
+		   case 10:  quit = true;
 		}
 	    }
 
