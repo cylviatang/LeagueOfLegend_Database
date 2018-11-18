@@ -612,38 +612,47 @@ public class textbased implements ActionListener {
     /*
      * Deliverable 8
      */
-    private void updateUserLevel() {
-        String username;
-        int ranklvl;
-        PreparedStatement ps;
+    private void updateUserLevel()
+    {
+        String          username;
+        int             ranklvl;
+        PreparedStatement  ps;
 
-        try {
-            ps = con.prepareStatement("UPDATE Rank_User SET ranklvl = ? WHERE username = ?");
-
+        try
+        {
             System.out.print("\nUsername: ");
             username = in.readLine();
-            ps.setString(2, username);
 
             System.out.print("\nNew rank level: ");
             ranklvl = Integer.parseInt(in.readLine());
-            ps.setInt(1, ranklvl);
+
+            String psString = "UPDATE Rank_User SET ranklvl = " + ranklvl + " WHERE username = '" + username + "'";
+            ps = con.prepareStatement(psString);
 
             int rowCount = ps.executeUpdate();
-            if (rowCount == 0) {
+            if (rowCount == 0)
+            {
                 System.out.println("\nUser " + username + " does not exist!");
             }
 
             con.commit();
 
             ps.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("IOException!");
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             System.out.println("Message: " + ex.getMessage());
 
-            try {
+            try
+            {
                 con.rollback();
-            } catch (SQLException ex2) {
+            }
+            catch (SQLException ex2)
+            {
                 System.out.println("Message: " + ex2.getMessage());
                 System.exit(-1);
             }
@@ -653,38 +662,47 @@ public class textbased implements ActionListener {
     /*
      * Deliverable 9
      */
-    private void updateUserExperience() {
-        String username;
-        int experiencelvl;
-        PreparedStatement ps;
+    private void updateUserExperience()
+    {
+        String          username;
+        int             experiencelvl;
+        PreparedStatement  ps;
 
-        try {
-            ps = con.prepareStatement("UPDATE Normal_User SET experiencelvl = ? WHERE username = ?");
-
+        try
+        {
             System.out.print("\nUsername: ");
             username = in.readLine();
-            ps.setString(2, username);
 
             System.out.print("\nNew experience level: ");
             experiencelvl = Integer.parseInt(in.readLine());
-            ps.setInt(1, experiencelvl);
+
+            String psString = "UPDATE Normal_User SET experiencelvl = " + experiencelvl + " WHERE username = '" + username + "'";
+            ps = con.prepareStatement(psString);
 
             int rowCount = ps.executeUpdate();
-            if (rowCount == 0) {
+            if (rowCount == 0)
+            {
                 System.out.println("\nUser " + username + " does not exist!");
             }
 
             con.commit();
 
             ps.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("IOException!");
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             System.out.println("Message: " + ex.getMessage());
 
-            try {
+            try
+            {
                 con.rollback();
-            } catch (SQLException ex2) {
+            }
+            catch (SQLException ex2)
+            {
                 System.out.println("Message: " + ex2.getMessage());
                 System.exit(-1);
             }
@@ -694,38 +712,47 @@ public class textbased implements ActionListener {
     /*
      * Deliverable 10
      */
-    private void updatePassword() {
-        String username;
-        String password;
-        PreparedStatement ps;
+    private void updatePassword()
+    {
+        String          username;
+        String          password;
+        PreparedStatement  ps;
 
-        try {
-            ps = con.prepareStatement("UPDATE Game_User1 SET password = ? WHERE username = ?");
-
+        try
+        {
             System.out.print("\nUsername: ");
             username = in.readLine();
-            ps.setString(2, username);
 
             System.out.print("\nNew password: ");
             password = in.readLine();
-            ps.setString(1, password);
+
+            String psString = "UPDATE Game_User1 SET password = '" + password + "' WHERE username = '" + username + "'";
+            ps = con.prepareStatement(psString);
 
             int rowCount = ps.executeUpdate();
-            if (rowCount == 0) {
+            if (rowCount == 0)
+            {
                 System.out.println("\nUser " + username + " does not exist!");
             }
 
             con.commit();
 
             ps.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("IOException!");
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             System.out.println("Message: " + ex.getMessage());
 
-            try {
+            try
+            {
                 con.rollback();
-            } catch (SQLException ex2) {
+            }
+            catch (SQLException ex2)
+            {
                 System.out.println("Message: " + ex2.getMessage());
                 System.exit(-1);
             }
