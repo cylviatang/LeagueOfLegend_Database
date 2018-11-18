@@ -191,8 +191,9 @@ public class textbased implements ActionListener {
                 System.out.print("7.  Update rank \n");
                 System.out.print("8.  Update experience level \n");
                 System.out.print("9.  Update password \n");
-                System.out.print("10.  Find club information (averge rank of players, number of members)\n");
-                System.out.print("11. Quit\n>> ");
+                System.out.print("10. Find club information (averge rank of players, number of members)\n");
+                System.out.print("11. Find all competitions taking place in a location");
+                System.out.print("12. Quit\n>> ");
 
 
                 choice = Integer.parseInt(in.readLine());
@@ -229,6 +230,9 @@ public class textbased implements ActionListener {
                         clubInformation();
                         break;
                     case 11:
+                        viewNAEvents();
+                        break;
+                    case 12:
                         quit = true;
                 }
             }
@@ -384,7 +388,7 @@ public class textbased implements ActionListener {
             String username = in.readLine();
 
             statement = con.createStatement();
-            rs = statement.executeQuery("SELECT p.eventname AS EventName, comp.seasonandyear AS Season&Year" +
+            rs = statement.executeQuery("SELECT p.eventname AS EventName, comp.seasonandyear AS SeasonAndYear" +
                     "FROM Rank_User ru, Clubs c, Participation p, Competitions comp" +
                     "WHERE ru.username =" + username + "AND ru.clubid =  c.clubid AND c.clubid = p.clubid AND p.eventname = comp.eventname");
 
@@ -409,7 +413,7 @@ public class textbased implements ActionListener {
                 en = rs.getString("EventName");
                 System.out.printf("%-10.10s", en);
 
-                date = rs.getInt("Season&Year");
+                date = rs.getInt("SeasonAndYear");
                 System.out.printf("%-10.10s", date);
             }
 
@@ -719,5 +723,57 @@ public class textbased implements ActionListener {
         }
     }
 
+    public void viewNAEvents(){
+        Statement statement;
+        ResultSet rs;
+        String name;
+        int date;
+
+        try {
+            statement = con.createStatement();
+            rs = statement.executeQuery("CREATE OR REPLACE VIEW [Events in North America] AS" +
+                    "SELECT Eventname AS Name, seasonandyear AS SeasonAndYear" +
+                    "FROM Competitions" +
+                    "WHERE location = “NorthAmerica”");
+
+            // get info on ResultSet
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            // get number of columns
+            int numCols = rsmd.getColumnCount();
+
+            System.out.println(" ");
+
+            // display column names;
+            for (int i = 0; i < numCols; i++) {
+                // get column name and print it
+
+                System.out.printf("%-15s", rsmd.getColumnName(i + 1));
+            }
+
+            System.out.println("\n");
+
+            while (rs.next()) {
+
+                name = rs.getString("Name");
+                System.out.printf("%-10.10s", name);
+
+                date = rs.getInt("Date");
+                System.out.printf("%-10.10s", date);
+
+            }
+            statement.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Message: " + ex.getMessage());
+
+            try {
+                con.rollback();
+            } catch (SQLException ex2) {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
 
 }

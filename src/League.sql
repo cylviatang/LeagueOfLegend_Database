@@ -284,6 +284,11 @@ grant select on Participation to public;*/
 -- Competitions
 insert into Competitions values ('event1',2018,'NorthAmerica');
 insert into Competitions values ('event2',2017,'Korea');
+insert into Competitions values ('event3',2016,'NorthAmerica');
+insert into Competitions values ('event4',2012,'Korea');
+insert into Competitions values ('event5',2012,'Korea');
+insert into Competitions values ('event6',2016,'NorthAmerica');
+
 
 -- Participation
 insert into Participation values (1001,'event1',2018);
