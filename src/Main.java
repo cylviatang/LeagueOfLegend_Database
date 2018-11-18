@@ -1,3 +1,5 @@
+import com.sun.java.util.jar.pack.Package;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main implements ActionListener{
 
@@ -21,7 +24,7 @@ public class Main implements ActionListener{
     // command line reader
     //private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-    private static Connection con;
+    private Connection con;
 
     // user is allowed 3 login attempts
     //private int loginAttempts = 0;
@@ -31,17 +34,9 @@ public class Main implements ActionListener{
     private JPasswordField passwordField;
     private JFrame mainFrame;*/
 
-
-
-    //private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
-    /*
-     * constructs login window and loads JDBC driver
-     */
     public static void main(String[] args) {
 
         //Dummy for testing
-        insertMatch_History(1, "test", "testChamp");
-        showTableWithName("Match_History");
 
         /*mainFrame = new JFrame("User Login");
 
@@ -138,6 +133,12 @@ public class Main implements ActionListener{
         }*/
 
     }
+
+    //private ArrayList<ArrayList<String>> tInfoList; // list of the tables created; It is the list of list of informations about each table
+    /*
+     * constructs login window and loads JDBC driver
+     */
+
 
 
 
@@ -334,18 +335,18 @@ public class Main implements ActionListener{
         }
     }*/
 
-    public static void insertMatch_History(int matchHistoryID, String username, String champion)
+    public void insertMatch_History(int matchHistoryID, String username, String champion)
     {
 
         PreparedStatement  ps;
 
         String iString = "INSERT INTO Match_History VALUES (";
-        iString = iString.concat(Integer.toString(matchHistoryID));
-        iString = iString.concat(", ");
-        iString = iString.concat(username);
-        iString = iString.concat(", ");
-        iString = iString.concat(champion);
-        iString = iString.concat(")");
+        iString.concat(Integer.toString(matchHistoryID));
+        iString.concat(", ");
+        iString.concat(username);
+        iString.concat(", ");
+        iString.concat(champion);
+        iString.concat(")");
 
 
 
@@ -443,10 +444,10 @@ public class Main implements ActionListener{
     /*
      * deletes a League
      */
-    public static void deleteGame_User(String username)
+    public void deleteGame_User(String username)
     {
         String iString = "DELETE FROM Game_User WHERE username = ";
-        iString = iString.concat(username);
+        iString.concat(username);
 
         PreparedStatement  ps;
 
@@ -493,14 +494,14 @@ public class Main implements ActionListener{
     /*
      * updates the name of a League
      */
-    public static void updateClubs(int clubIDToUpdate, int newClubManagerID)
+    public void updateClubs(int clubIDToUpdate, int newClubManagerID)
     {
         /*int                bid;
         String             bname;*/
         String iString = "UPDATE Clubs SET clubmanagerID = ";
-        iString = iString.concat(Integer.toString(newClubManagerID));
-        iString = iString.concat(" WHERE clubid = ");
-        iString = iString.concat(Integer.toString(clubIDToUpdate));
+        iString.concat(Integer.toString(newClubManagerID));
+        iString.concat(" WHERE clubid = ");
+        iString.concat(Integer.toString(clubIDToUpdate));
 
 
         PreparedStatement  ps;
@@ -551,7 +552,7 @@ public class Main implements ActionListener{
     /*
      * display information about Leaguees
      */
-    public static String showTableWithName(String tname)
+    public String showTableWithName(String tname)
     {
         /*String     bid;
         String     bname;
@@ -564,7 +565,7 @@ public class Main implements ActionListener{
         String rtInfo = "";
 
         String iString = "SELECT * FROM ";
-        iString = iString.concat(tname);
+        iString.concat(tname);
 
 
         try
@@ -582,7 +583,7 @@ public class Main implements ActionListener{
 
 
             //System.out.println(" ");
-            rtInfo = rtInfo.concat("\n");
+            rtInfo.concat("\n");
 
             ArrayList<String> columnNames = new ArrayList<String>();
             // display column names;
@@ -592,14 +593,14 @@ public class Main implements ActionListener{
 
                 //System.out.printf("%-15s", rsmd.getColumnName(i+1));
                 String columnName = rsmd.getColumnName(i+1);
-                rtInfo = rtInfo.concat(columnName);
+                rtInfo.concat(columnName);
                 columnNames.add(columnName);
-                rtInfo = rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
+                rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
 
             }
 
             //System.out.println(" ");
-            rtInfo = rtInfo.concat("\n");
+            rtInfo.concat("\n");
 
 
             while(rs.next())
@@ -611,12 +612,12 @@ public class Main implements ActionListener{
 
                 for (String columnName : columnNames){
                     String att = rs.getString(columnName);
-                    rtInfo = rtInfo.concat(att);
-                    rtInfo = rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
+                    rtInfo.concat(att);
+                    rtInfo.concat(returnSpacesAccordingToLengthOfText(columnName));
 
                 }
 
-                rtInfo = rtInfo.concat("\n");
+                rtInfo.concat("\n");
 
                 /*bid = rs.getString("League_id");
                 System.out.printf("%-10.10s", bid);
@@ -660,7 +661,7 @@ public class Main implements ActionListener{
         return rtInfo;
     }
 
-    public static void updatePassword(String username, String newPassword) {
+    public void updatePassword(String username, String newPassword) {
         PreparedStatement  ps;
 
         try
@@ -701,7 +702,7 @@ public class Main implements ActionListener{
         }
     }
 
-    public static void experienceUpdate(String username, int newExperience) {
+    public void experienceUpdate(String username, int newExperience) {
         PreparedStatement  ps;
 
         try
@@ -742,7 +743,7 @@ public class Main implements ActionListener{
         }
     }
 
-    public static void rankUp(String username, int newRank) {
+    public void rankUp(String username, int newRank) {
         PreparedStatement  ps;
 
         try
@@ -783,15 +784,15 @@ public class Main implements ActionListener{
         }
     }
 
-    public static String formatString(String input) {
+    public String formatString(String input) {
         int spaces = 20 - input.length();
         for (int i = 0; i < spaces; i++) {
-            input = input.concat(" ");
+            input.concat(" ");
         }
         return input;
     }
 
-    public static String clubInformation() {
+    public String clubInformation() {
         String information = "";
         Statement stmt;
         ResultSet  rs;
@@ -812,17 +813,17 @@ public class Main implements ActionListener{
             for (int i = 0; i < numCols; i++)
             {
                 String columnName = rsmd.getColumnName(i+1);
-                information = information.concat(formatString(columnName));
+                information.concat(formatString(columnName));
             }
 
-            information = information.concat("\n");
+            information.concat("\n");
 
             while(rs.next())
             {
-                information = information.concat(formatString(rs.getString("username")));
-                information = information.concat(formatString(rs.getString("ranklvl")));
-                information = information.concat(formatString(rs.getString("clubid")));
-                information = information.concat("\n");
+                information.concat(formatString(rs.getString("username")));
+                information.concat(formatString(rs.getString("ranklvl")));
+                information.concat(formatString(rs.getString("clubid")));
+                information.concat("\n");
             }
 
             // close the statement;
@@ -837,20 +838,195 @@ public class Main implements ActionListener{
         return information;
     }
 
-    public static String returnSpacesAccordingToLengthOfText(String text){
+    public class ParticipationInformation {
+        private String eventName;
+        private int seasonAndYr;
+
+        public ParticipationInformation(){
+            this.eventName = null;
+            this.seasonAndYr = 0;
+        }
+
+
+    }
+
+
+    //returns list of event participation info of selected user
+    // includes: username, events they participated in, and when they participated
+    //Copied exceptions idk what they actually do hopefully we don't catch any lmao
+
+public List<ParticipationInformation> getParticipationInfo(String username){
+        Statement statement;
+        ResultSet rs;
+    List<ParticipationInformation> loPptInfo = new ArrayList<>();
+
+    try {
+        statement = con.createStatement();
+        rs = statement.executeQuery("SELECT ru.username, p.eventname, comp.seasonandyear" +
+                "FROM Rank_User ru, Clubs c, Participation p, Competitions comp" +
+                "WHERE ru.username =" +username + "AND ru.clubid =  c.clubid AND c.clubid = p.clubid AND p.eventname = comp.eventname");
+
+
+        /* DO WE HAVE TO PRINT COLUMNS STILL IF WE'RE NOT DIRECTLY RUNNING THIS IN TERMINAL???????
+
+        HIHIHIHIHIHIHIHI PLS READ THIS
+
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        int numCols = rsmd.getColumnCount();
+        ArrayList<String> cNames = new ArrayList<>();
+
+        for (int i = 0; i < numCols; i++) {
+            String cName = rsmd.getColumnName(i + 1);
+            cNames.add(cName);
+
+        }
+
+        System.out.println("\n");
+
+        */
+        while (rs.next()) {
+            ParticipationInformation pi = new ParticipationInformation();
+            pi.eventName = rs.getString("eventname");
+            pi.seasonAndYr = rs.getInt("seasonandyear");
+            loPptInfo.add(pi);
+        }
+        statement.close();
+
+        /*catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }*/
+
+    }
+
+    catch (SQLException ex)
+    {
+        System.out.println("Message: " + ex.getMessage());
+
+        try
+        {
+            con.rollback();
+        }
+        catch (SQLException ex2)
+        {
+            System.out.println("Message: " + ex2.getMessage());
+            System.exit(-1);
+        }
+    }
+    return loPptInfo;
+}
+    //returns number of champions owned by selected user
+    // includes: username and number of champions they own
+
+    public int getNumChamp(String username){
+        Statement statement;
+        ResultSet rs;
+        int championCount = 0;
+
+        try {
+            statement = con.createStatement();
+            rs = statement.executeQuery("SELECT u.username AS Username, COUNT(*) AS numChampions" +
+                    "FROM Game_User u, Owns o, Champion champ" +
+                    "WHERE u.username =" + username +"AND u.username = o.username AND o.championid = champ.championid"+
+                    "GROUP BY username");
+            while(rs.next()) {
+                championCount = rs.getInt("numChapmions");
+            }
+
+            statement.close();
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+        return championCount;
+    }
+
+    //HIHIHIHIHIHI ARE THESE CLASSES EXTRA? IS THIS ALLOWED?????? IDK HOW TO JAVA
+
+    //information for one player in a single match
+    public class matchInformation {
+        private String username;
+        private int date;
+        private int time;
+        private String mode;
+
+        public matchInformation(){
+            this.username = null;
+            this.date= 0;
+            this.time = 0;
+            this.mode = null;
+        }
+
+    }
+
+    public List<matchInformation> getMatchInfo(String username){
+        Statement statement;
+        ResultSet rs;
+        List<matchInformation> loMatInfo = new ArrayList<>();
+
+        try {
+            statement = con.createStatement();
+            rs = statement.executeQuery("SELECT u.username AS Username, m.date AS Date, m.time AS Time, m.modeid AS Mode" +
+                    "FROM Game_User u, Match m, Match_History mh" +
+                    "WHERE u.username =" + username + "u.username AND = mh.username AND mh.matchhistoryid = m.matchhistoryid");
+
+            while (rs.next()) {
+                matchInformation mi = new matchInformation();
+                mi.date = rs.getInt("Date");
+                mi.time = rs.getInt("Time");
+                mi.mode = rs.getString("Mode");
+                loMatInfo.add(mi);
+            }
+            statement.close();
+
+        /*catch (IOException e)
+        {
+            System.out.println("IOException!");
+        }*/
+
+        }
+        catch (SQLException ex)
+        {
+            System.out.println("Message: " + ex.getMessage());
+
+            try
+            {
+                con.rollback();
+            }
+            catch (SQLException ex2)
+            {
+                System.out.println("Message: " + ex2.getMessage());
+                System.exit(-1);
+            }
+        }
+        return loMatInfo;
+    }
+
+    public String returnSpacesAccordingToLengthOfText(String text){
         int maxLength = 20;
         String spaces = "";
         int textLength = text.length();
         int spacesToFill = maxLength - textLength;
 
         for (int i = 0; i < spacesToFill; i ++) {
-            spaces = spaces.concat(" ");
+            spaces.concat(" ");
 
         }
 
         return spaces;
     }
-
 
 }
 
