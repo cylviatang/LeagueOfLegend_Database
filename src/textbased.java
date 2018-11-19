@@ -399,7 +399,7 @@ public class textbased implements ActionListener {
             statement = con.createStatement();
             rs = statement.executeQuery("SELECT p.eventname AS EventName, comp.seasonandyear AS SeasonAndYear" +
                     "FROM Rank_User ru, Clubs c, Participation p, Competitions comp" +
-                    "WHERE ru.username =" + username + "AND ru.clubid =  c.clubid AND c.clubid = p.clubid AND p.eventname = comp.eventname");
+                    "WHERE ru.username = '" + username + "' AND ru.clubid =  c.clubid AND c.clubid = p.clubid AND p.eventname = comp.eventname");
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
@@ -451,9 +451,9 @@ public class textbased implements ActionListener {
         try {
             statement = con.createStatement();
             rs = statement.executeQuery("SELECT u.username AS Username, COUNT(*) AS ChampionsCount" +
-                    "FROM Game_User u, Owns o, Champion champ" +
+                    "FROM Game_User1 u, Owns o, Champion champ" +
                     "WHERE u.username = o.username AND o.championid = champ.championid" +
-                    "GROUP BY username");
+                    "GROUP BY u.username");
 
 
             // get info on ResultSet
@@ -510,7 +510,7 @@ public class textbased implements ActionListener {
             statement = con.createStatement();
             rs = statement.executeQuery("SELECT m.date AS Date, m.time AS Time, m.modeid AS Mode" +
                     "FROM Game_User u, Match m, Match_History mh" +
-                    "WHERE u.username =" + username + "u.username AND = mh.username AND mh.matchhistoryid = m.matchhistoryid");
+                    "WHERE u.username = '" + username + "'AND u.username= mh.username AND mh.matchhistoryid = m.matchhistoryid");
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
