@@ -251,6 +251,8 @@ commit;
 
 -- Match1
 insert into Match1 values (500,10001,20180110,1610);
+insert into Match1 values (503,10000,20180706,1000);
+insert into Match1 values (504,10005,20170912,1420);
 insert into Match1 values (501,10002,20180111,1620);
 insert into Match1 values (502,10003,20180210,1845);
 commit;
