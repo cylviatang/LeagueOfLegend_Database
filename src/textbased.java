@@ -447,10 +447,7 @@ public class textbased implements ActionListener {
         ResultSet rs;
         int count;
         String username;
-        String string = "SELECT u.username AS Username, COUNT(*) AS ChampionsCount" +
-                "FROM Game_User1 u, Owns o, Champion champ" +
-                "WHERE u.username = o.username AND o.championid = champ.championid" +
-                "GROUP BY u.username";
+        String string = "SELECT u.username AS Username, COUNT(*) AS ChampionsCount FROM Game_User1 u, Owns o, Champion champ WHERE u.username = o.username AND o.championid = champ.championid GROUP BY u.username";
 
         try {
             statement = con.createStatement();
@@ -507,9 +504,7 @@ public class textbased implements ActionListener {
 
             System.out.print("\nUsername: ");
             username = in.readLine();
-            String string = "SELECT m1.datePlayed, m1.time, m2.modeid" +
-                    "FROM Game_User1 u, Match1 m1, Match2 m2, Match_History mh" +
-                    "WHERE u.username = '" + username + "' AND u.username = mh.username AND mh.matchhistoryid = m1.matchhistoryid AND m1.matchid = m2.matchid";
+            String string = "SELECT m1.datePlayed, m1.time, m2.modeid FROM Game_User1 u, Match1 m1, Match2 m2, Match_History mh WHERE u.username = '" + username + "' AND u.username = mh.username AND mh.matchhistoryid = m1.matchhistoryid AND m1.matchid = m2.matchid";
 
             statement = con.createStatement();
             rs = statement.executeQuery(string);
@@ -786,11 +781,12 @@ public class textbased implements ActionListener {
 
         try {
             statement = con.createStatement();
-            String string = "CREATE VIEW EventsInNorthAmerica AS" +
-                    "SELECT Eventname AS Name, seasonandyear AS SeasonAndYear" +
-                    "FROM Competitions" +
-                    "WHERE location = 'NorthAmerica'";
+            ResultSet dropV = statement.executeQuery("Drop view EventsInNorthAmerica");
+            String string = "CREATE VIEW EventsInNorthAmerica AS SELECT Eventname AS Name, seasonandyear AS SeasonAndYear FROM Competitions WHERE location = 'NorthAmerica'";
+
             rs = statement.executeQuery(string);
+            ResultSet viewR = statement.executeQuery("select * from EventsInNorthAmerica");
+            System.out.print("View EventInNorthAmerica had been created");
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
