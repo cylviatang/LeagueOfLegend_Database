@@ -280,7 +280,18 @@ commit;
 
 -- Participation
 insert into Participation values (1001,'event1',2018);
+insert into Participation values (1001,'event2',2017);
+insert into Participation values (1001,'event3',2016);
+
 insert into Participation values (1002,'event2',2017);
+insert into Participation values (1002,'event3',2016);
+insert into Participation values (1002,'event2',2012);
+
+insert into Participation values (1003,'event1',2018);
+
+insert into Participation values (1004,'event2',2017);
+insert into Participation values (1004,'event6',2016);
+
 
 
 

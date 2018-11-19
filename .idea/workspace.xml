@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="Added to competitions in .sql">
+    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="Fixed all of 5,6,11 except getmatchinfo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/textbased.java" afterPath="$PROJECT_DIR$/src/textbased.java" />
+      <change beforePath="$PROJECT_DIR$/src/League.sql" afterPath="$PROJECT_DIR$/src/League.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,11 +88,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="textbased.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="textbased.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/textbased.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="574" column="22" lean-forward="true" selection-start-line="574" selection-start-column="22" selection-end-line="574" selection-end-column="22" />
+            <state relative-caret-position="307">
+              <caret line="513" column="0" lean-forward="true" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
               <folding>
                 <element signature="e#24235#24236#0" expanded="true" />
                 <element signature="e#24281#24282#0" expanded="true" />
@@ -121,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="League.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="League.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/League.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="291" column="53" lean-forward="true" selection-start-line="291" selection-start-column="53" selection-end-line="291" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -155,8 +155,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/Game_User.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/League.sql" />
         <option value="$PROJECT_DIR$/src/textbased.java" />
+        <option value="$PROJECT_DIR$/src/League.sql" />
       </list>
     </option>
   </component>
@@ -385,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542593721320</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed all of 5,6,11 except getmatchinfo">
+      <created>1542594964213</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1542594964213</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -483,7 +490,8 @@
     <MESSAGE value="Finished View" />
     <MESSAGE value="Fixed 8, 9, 10" />
     <MESSAGE value="Added to competitions in .sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added to competitions in .sql" />
+    <MESSAGE value="Fixed all of 5,6,11 except getmatchinfo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed all of 5,6,11 except getmatchinfo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -541,6 +549,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/textbased.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="513" column="0" lean-forward="true" selection-start-line="513" selection-start-column="0" selection-end-line="513" selection-end-column="0" />
+          <folding>
+            <element signature="e#24235#24236#0" expanded="true" />
+            <element signature="e#24281#24282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SQLfunc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -551,20 +570,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/League.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="291" column="53" lean-forward="true" selection-start-line="291" selection-start-column="53" selection-end-line="291" selection-end-column="53" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/textbased.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="574" column="22" lean-forward="true" selection-start-line="574" selection-start-column="22" selection-end-line="574" selection-end-column="22" />
-          <folding>
-            <element signature="e#24235#24236#0" expanded="true" />
-            <element signature="e#24281#24282#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
