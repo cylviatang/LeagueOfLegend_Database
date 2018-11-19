@@ -236,6 +236,8 @@ insert into Match_History values (10000,'jayJ',100);
 insert into Match_History values (10001,'jodhB',100);
 insert into Match_History values (10002,'cloeM',100);
 insert into Match_History values (10003,'jayJ',101);
+insert into Match_History values (10004,'jayJ',101);
+
 commit;
 
 -- Game_Mode1
@@ -252,15 +254,19 @@ commit;
 -- Match1
 insert into Match1 values (500,10001,20180110,1610);
 insert into Match1 values (503,10000,20180706,1000);
-insert into Match1 values (504,10005,20170912,1420);
 insert into Match1 values (501,10002,20180111,1620);
 insert into Match1 values (502,10003,20180210,1845);
+insert into Match1 values (504,10004,20180810,1545);
+
 commit;
 
 -- Match2
 insert into Match2 values (500,1);
 insert into Match2 values (501,1);
 insert into Match2 values (502,2);
+insert into Match2 values (503,3);
+insert into Match2 values (504,3);
+
 commit;
 
 -- Competitions
