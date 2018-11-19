@@ -178,18 +178,18 @@ public class textbased implements ActionListener {
 
             while (!quit) {
                 System.out.print("\n\nPlease choose one of the following: \n");
-                System.out.print("1.  Insert Match\n");
+                System.out.print("1.  Insert a Match into player's match history\n");
                 System.out.print("2.  Delete User\n");
                 System.out.print("3.  Update Club Manager ID\n");
-                System.out.print("4.  Find event information of rank player\n");
+                System.out.print("4.  Find event participation information of rank player\n");
                 System.out.print("5.  Find a player's post match information\n");
                 System.out.print("6.  Find the number of champions owned by all players\n");
 
-                System.out.print("7.  Update rank \n");
-                System.out.print("8.  Update experience level \n");
+                System.out.print("7.  Update rank level of a rank user \n");
+                System.out.print("8.  Update experience level of a normal user\n");
                 System.out.print("9.  Update password \n");
                 System.out.print("10. Find club information (averge rank of players, number of members)\n");
-                System.out.print("11. Find all competitions taking place in a location");
+                System.out.print("11. Find all competitions taking place in North America\n");
                 System.out.print("12. Quit\n>> ");
 
 
@@ -423,7 +423,16 @@ public class textbased implements ActionListener {
                 System.out.printf("%-10.10s", en);
 
                 date = rs.getInt("SeasonAndYear");
-                System.out.printf("%-10.10s", date);
+                //System.out.printf("%-10.10s", date);
+
+                if (rs.wasNull())
+                {
+                    System.out.printf("%-20.20s\n", " ");
+                }
+                else
+                {
+                    System.out.printf("%-20.20s\n", date);
+                }
             }
 
             statement.close();
@@ -476,7 +485,17 @@ public class textbased implements ActionListener {
                 System.out.printf("%-10.10s", username);
 
                 count = rs.getInt("ChampionsCount");
-                System.out.printf("%-10.10s", count);
+                //System.out.printf("%-10.10s", count);
+
+                if (rs.wasNull())
+                {
+                    System.out.printf("%-20.20s\n", " ");
+                }
+                else
+                {
+                    System.out.printf("%-40.20s\n", count);
+                }
+
             }
 
             statement.close();
@@ -535,8 +554,16 @@ public class textbased implements ActionListener {
                 System.out.printf("%-10.10s", time);
 
                 mode = rs.getString("modeid");
-                System.out.printf("%-10.10s", mode);
+                //System.out.printf("%-10.10s", mode);
 
+                if (rs.wasNull())
+                {
+                    System.out.printf("%-20.20s\n", " ");
+                }
+                else
+                {
+                    System.out.printf("%-20.20s\n", mode);
+                }
             }
             statement.close();
 
@@ -775,26 +802,30 @@ public class textbased implements ActionListener {
 
     public void viewNAEvents(){
         Statement statement;
+        Statement st1;
         ResultSet rs;
         String name;
         int date;
 
         try {
             statement = con.createStatement();
-            ResultSet dropV = statement.executeQuery("Drop view EventsInNorthAmerica");
-            String string = "CREATE VIEW EventsInNorthAmerica AS SELECT Eventname AS Name, seasonandyear AS SeasonAndYear FROM Competitions WHERE location = 'NorthAmerica'";
+            st1=con.createStatement();
 
-            rs = statement.executeQuery(string);
-            ResultSet viewR = statement.executeQuery("select * from EventsInNorthAmerica");
-            System.out.print("View EventInNorthAmerica had been created");
+            String string = "CREATE VIEW EventsInNorthAmerica AS SELECT Eventname AS Name, seasonandyear AS SeasonAndYear FROM Competitions WHERE location = 'NorthAmerica'";
+            //rs = statement.executeQuery(string);
+            statement.executeQuery(string);
+
+            ResultSet viewR = st1.executeQuery("select * from EventsInNorthAmerica");
+
+           // System.out.print("View EventInNorthAmerica had been created");
 
             // get info on ResultSet
-            ResultSetMetaData rsmd = rs.getMetaData();
+            ResultSetMetaData rsmd = viewR.getMetaData();
 
             // get number of columns
             int numCols = rsmd.getColumnCount();
 
-            System.out.println(" ");
+            System.out.println("\n");
 
             // display column names;
             for (int i = 0; i < numCols; i++) {
@@ -803,17 +834,26 @@ public class textbased implements ActionListener {
                 System.out.printf("%-15s", rsmd.getColumnName(i + 1));
             }
 
-            System.out.println("\n");
+            System.out.println(" ");
 
-            while (rs.next()) {
+            while (viewR.next()) {
 
-                name = rs.getString("Name");
+                name = viewR.getString("Name");
                 System.out.printf("%-10.10s", name);
 
-                date = rs.getInt("Date");
-                System.out.printf("%-10.10s", date);
+                date = viewR.getInt("SeasonAndYear");
+                //System.out.printf("%-10.10s", date);
+                if (viewR.wasNull())
+                {
+                    System.out.printf("%-20.20s\n", " ");
+                }
+                else
+                {
+                    System.out.printf("%-40.20s\n", date);
+                }
 
             }
+            statement.executeQuery("Drop view EventsInNorthAmerica");
             statement.close();
 
         } catch (SQLException ex) {
@@ -826,6 +866,7 @@ public class textbased implements ActionListener {
                 System.exit(-1);
             }
         }
+
     }
 
     public static void main(String args[])
