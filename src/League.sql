@@ -156,6 +156,7 @@ insert into Game_User1 values('cylviaT','login_c','123abc');
 insert into Game_User1 values('cloeM','login_cl','456def');
 insert into Game_User1 values('jodhB','login_jo','789ghi');
 insert into Game_User1 values('jayJ','login_ja','101jkl');
+
 insert into Game_User1 values('joeyZ','login_joey','202yjdks');
 insert into Game_User1 values('David','login_david','639jfeidlskdf');
 insert into Game_User1 values('Crystal','login_crystal','485656earsfd');
@@ -212,9 +213,9 @@ insert into rank_User values ('jodhB',60,1002);
 insert into rank_User values ('joeyZ',65,1003);
 insert into rank_User values ('David',89,1004);
 
-insert into rank_User values ('Oris',73,1002);
+insert into rank_User values ('Oris',73,1001);
 insert into rank_User values ('Poppy',83,1002);
-insert into rank_User values ('Vivian',90,1004);
+insert into rank_User values ('Vivian',90,1003);
 insert into rank_User values ('Kevin',64,1004);
 commit;
 
@@ -223,6 +224,11 @@ insert into Owns values ('jayJ',100);
 insert into Owns values ('jayJ',101);
 insert into Owns values ('jodhB',101);
 insert into Owns values ('cloeM',103);
+insert into Owns values ('cloeM',100);
+insert into Owns values ('cylviaT',103);
+insert into Owns values ('cylviaT',100);
+insert into Owns values ('cylviaT',101);
+
 commit;
 
 --matchHistory
@@ -256,12 +262,12 @@ insert into Match2 values (502,2);
 commit;
 
 -- Competitions
-insert into Competitions values ('event1',2018,'NorthAmerica');
-insert into Competitions values ('event2',2017,'Korea');
-insert into Competitions values ('event3',2016,'NorthAmerica');
-insert into Competitions values ('event4',2012,'Korea');
-insert into Competitions values ('event5',2012,'Korea');
-insert into Competitions values ('event6',2016,'NorthAmerica');
+insert into Competitions values ('event1',2013,'NorthAmerica');
+insert into Competitions values ('event2',2014,'Korea');
+insert into Competitions values ('event3',2015,'NorthAmerica');
+insert into Competitions values ('event4',2016,'Korea');
+insert into Competitions values ('event5',2017,'Korea');
+insert into Competitions values ('event6',2018,'NorthAmerica');
 
 -- League_Employee1
 insert into League_Employee1 values (20000,'Respon1');
@@ -279,18 +285,21 @@ insert into League_Employee3 values ('Respon2',2);
 commit;
 
 -- Participation
-insert into Participation values (1001,'event1',2018);
-insert into Participation values (1001,'event2',2017);
-insert into Participation values (1001,'event3',2016);
+insert into Participation values (1001,'event1',2013);
+insert into Participation values (1001,'event2',2014);
+insert into Participation values (1001,'event3',2015);
+insert into Participation values (1001,'event4',2016);
+insert into Participation values (1001,'event5',2017);
 
-insert into Participation values (1002,'event2',2017);
-insert into Participation values (1002,'event3',2016);
-insert into Participation values (1002,'event2',2012);
+insert into Participation values (1002,'event2',2014);
+insert into Participation values (1002,'event3',2015);
+insert into Participation values (1002,'event4',2016);
 
-insert into Participation values (1003,'event1',2018);
+insert into Participation values (1003,'event4',2016);
+insert into Participation values (1003,'event5',2017);
+insert into Participation values (1003,'event6',2018);
 
-insert into Participation values (1004,'event2',2017);
-insert into Participation values (1004,'event6',2016);
+insert into Participation values (1004,'event6',2018);
 
 
 
