@@ -447,13 +447,14 @@ public class textbased implements ActionListener {
         ResultSet rs;
         int count;
         String username;
+        String string = "SELECT u.username AS Username, COUNT(*) AS ChampionsCount" +
+                "FROM Game_User1 u, Owns o, Champion champ" +
+                "WHERE u.username = o.username AND o.championid = champ.championid" +
+                "GROUP BY u.username";
 
         try {
             statement = con.createStatement();
-            rs = statement.executeQuery("SELECT u.username AS Username, COUNT(*) AS ChampionsCount" +
-                    "FROM Game_User u, Owns o, Champion champ" +
-                    "WHERE u.username = o.username AND o.championid = champ.championid" +
-                    "GROUP BY username");
+            rs = statement.executeQuery(string);
 
 
             // get info on ResultSet
@@ -506,11 +507,12 @@ public class textbased implements ActionListener {
 
             System.out.print("\nUsername: ");
             username = in.readLine();
+            String string = "SELECT m1.datePlayed AS Date, m1.time AS Time, m2.modeid AS Mode" +
+                    "FROM Game_User1 u, Match1 m1, Match2 m2, Match_History mh" +
+                    "WHERE u.username = '" + username + "' AND u.username = mh.username AND mh.matchhistoryid = m1.matchhistoryid AND m1.matchid = m2.matchid";
 
             statement = con.createStatement();
-            rs = statement.executeQuery("SELECT m.date AS Date, m.time AS Time, m.modeid AS Mode" +
-                    "FROM Game_User u, Match m, Match_History mh" +
-                    "WHERE u.username =" + username + "u.username AND = mh.username AND mh.matchhistoryid = m.matchhistoryid");
+            rs = statement.executeQuery(string);
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -784,10 +786,11 @@ public class textbased implements ActionListener {
 
         try {
             statement = con.createStatement();
-            rs = statement.executeQuery("CREATE OR REPLACE VIEW [Events in North America] AS" +
+            String string = "CREATE VIEW EventsInNorthAmerica AS" +
                     "SELECT Eventname AS Name, seasonandyear AS SeasonAndYear" +
                     "FROM Competitions" +
-                    "WHERE location = “NorthAmerica”");
+                    "WHERE location = 'NorthAmerica'";
+            rs = statement.executeQuery(string);
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
