@@ -784,10 +784,10 @@ public class textbased implements ActionListener {
 
         try {
             statement = con.createStatement();
-            rs = statement.executeQuery("CREATE OR REPLACE VIEW [Events in North America] AS" +
+            rs = statement.executeQuery("CREATE VIEW EventsInNorthAmerica AS" +
                     "SELECT Eventname AS Name, seasonandyear AS SeasonAndYear" +
                     "FROM Competitions" +
-                    "WHERE location = “NorthAmerica”");
+                    "WHERE location = 'NorthAmerica'");
 
             // get info on ResultSet
             ResultSetMetaData rsmd = rs.getMetaData();
