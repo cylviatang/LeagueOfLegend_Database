@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="Everything except get match info">
+    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="fixed 5/6 queries">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/textbased.java" afterPath="$PROJECT_DIR$/src/textbased.java" />
     </list>
@@ -91,11 +91,11 @@
       <file leaf-file-name="textbased.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/textbased.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3838">
-              <caret line="511" column="114" lean-forward="false" selection-start-line="511" selection-start-column="114" selection-end-line="511" selection-end-column="114" />
+            <state relative-caret-position="273">
+              <caret line="516" column="36" lean-forward="true" selection-start-line="516" selection-start-column="36" selection-end-line="516" selection-end-column="36" />
               <folding>
-                <element signature="e#24506#24507#0" expanded="true" />
-                <element signature="e#24552#24553#0" expanded="true" />
+                <element signature="e#24482#24483#0" expanded="true" />
+                <element signature="e#24528#24529#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,7 +104,7 @@
       <file leaf-file-name="League.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/League.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1948">
+            <state relative-caret-position="2725">
               <caret line="235" column="17" lean-forward="true" selection-start-line="235" selection-start-column="17" selection-end-line="235" selection-end-column="17" />
               <folding />
             </state>
@@ -166,7 +166,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-125" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
@@ -524,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542597689628</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixed 5/6 queries">
+      <created>1542601081644</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1542601081644</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -539,7 +546,7 @@
     <option name="totallyTimeSpent" value="13854000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-125" y="23" width="1440" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -626,7 +633,8 @@
     <MESSAGE value="added to participation" />
     <MESSAGE value="fixed competitions lmao" />
     <MESSAGE value="Everything except get match info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything except get match info" />
+    <MESSAGE value="fixed 5/6 queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed 5/6 queries" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -638,8 +646,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24506#24507#0" expanded="true" />
-            <element signature="e#24552#24553#0" expanded="true" />
+            <element signature="e#24482#24483#0" expanded="true" />
+            <element signature="e#24528#24529#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -694,7 +702,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/League.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1948">
+        <state relative-caret-position="2725">
           <caret line="235" column="17" lean-forward="true" selection-start-line="235" selection-start-column="17" selection-end-line="235" selection-end-column="17" />
           <folding />
         </state>
@@ -702,11 +710,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/textbased.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3838">
-          <caret line="511" column="114" lean-forward="false" selection-start-line="511" selection-start-column="114" selection-end-line="511" selection-end-column="114" />
+        <state relative-caret-position="273">
+          <caret line="516" column="36" lean-forward="true" selection-start-line="516" selection-start-column="36" selection-end-line="516" selection-end-column="36" />
           <folding>
-            <element signature="e#24506#24507#0" expanded="true" />
-            <element signature="e#24552#24553#0" expanded="true" />
+            <element signature="e#24482#24483#0" expanded="true" />
+            <element signature="e#24528#24529#0" expanded="true" />
           </folding>
         </state>
       </provider>

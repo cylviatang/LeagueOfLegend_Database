@@ -507,7 +507,7 @@ public class textbased implements ActionListener {
 
             System.out.print("\nUsername: ");
             username = in.readLine();
-            String string = "SELECT m1.datePlayed AS Date, m1.time AS Time, m2.modeid AS Mode" +
+            String string = "SELECT m1.datePlayed, m1.time, m2.modeid" +
                     "FROM Game_User1 u, Match1 m1, Match2 m2, Match_History mh" +
                     "WHERE u.username = '" + username + "' AND u.username = mh.username AND mh.matchhistoryid = m1.matchhistoryid AND m1.matchid = m2.matchid";
 
