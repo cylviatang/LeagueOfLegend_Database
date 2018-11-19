@@ -141,7 +141,6 @@ public class textbased implements ActionListener {
         }
     }
 
-
     /*
      * event handler for login window
      */
@@ -164,8 +163,6 @@ public class textbased implements ActionListener {
         }
 
     }
-
-
     /*
      * displays simple text interface
      */
@@ -384,7 +381,9 @@ public class textbased implements ActionListener {
         }
     }
 
-
+    /*
+     * Deliverable 5
+     */
     public void getParticipationInfo() {
         Statement statement;
         ResultSet rs;
@@ -397,9 +396,10 @@ public class textbased implements ActionListener {
             String username = in.readLine();
 
             statement = con.createStatement();
-            rs = statement.executeQuery("SELECT p.eventname AS EventName, comp.seasonandyear AS SeasonAndYear" +
-                    "FROM Rank_User ru, Clubs c, Participation p, Competitions comp" +
-                    "WHERE ru.username =" + username + "AND ru.clubid =  c.clubid AND c.clubid = p.clubid AND p.eventname = comp.eventname");
+            String participationQuery;
+            participationQuery = "SELECT p.eventname AS EventName, comp.seasonandyear AS SeasonAndYear FROM Rank_User ru, Clubs c, Participation p, Competitions comp WHERE ru.username ='" + username+ "'AND ru.clubid =  c.clubid AND c.clubid = p.clubid AND p.eventname = comp.eventname";
+            //System.out.print(participationQuery);
+            rs = statement.executeQuery(participationQuery);
 
             ResultSetMetaData rsmd = rs.getMetaData();
 
