@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="added to participation">
+    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="fixed competitions lmao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/League.sql" afterPath="$PROJECT_DIR$/src/League.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,15 +87,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="textbased.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="textbased.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/textbased.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="757">
-              <caret line="403" column="54" lean-forward="true" selection-start-line="403" selection-start-column="54" selection-end-line="403" selection-end-column="54" />
+            <state relative-caret-position="208">
+              <caret line="108" column="0" lean-forward="true" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
               <folding>
                 <element signature="e#24235#24236#0" expanded="true" />
                 <element signature="e#24281#24282#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="League.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/League.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-525">
+              <caret line="229" column="40" lean-forward="false" selection-start-line="229" selection-start-column="40" selection-end-line="229" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,16 +125,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
               <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="League.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/League.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-452">
-              <caret line="229" column="40" lean-forward="false" selection-start-line="229" selection-start-column="40" selection-end-line="229" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -167,6 +166,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-319" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -399,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542595435371</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fixed competitions lmao">
+      <created>1542596898746</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1542596898746</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -414,7 +421,7 @@
     <option name="totallyTimeSpent" value="13854000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="-319" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -499,7 +506,8 @@
     <MESSAGE value="Added to competitions in .sql" />
     <MESSAGE value="Fixed all of 5,6,11 except getmatchinfo" />
     <MESSAGE value="added to participation" />
-    <option name="LAST_COMMIT_MESSAGE" value="added to participation" />
+    <MESSAGE value="fixed competitions lmao" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed competitions lmao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -565,22 +573,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/League.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-525">
+          <caret line="229" column="40" lean-forward="false" selection-start-line="229" selection-start-column="40" selection-end-line="229" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/textbased.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="757">
-          <caret line="403" column="54" lean-forward="true" selection-start-line="403" selection-start-column="54" selection-end-line="403" selection-end-column="54" />
+        <state relative-caret-position="208">
+          <caret line="108" column="0" lean-forward="true" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding>
             <element signature="e#24235#24236#0" expanded="true" />
             <element signature="e#24281#24282#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/League.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-452">
-          <caret line="229" column="40" lean-forward="false" selection-start-line="229" selection-start-column="40" selection-end-line="229" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
