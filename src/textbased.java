@@ -520,7 +520,7 @@ public class textbased implements ActionListener {
             // get number of columns
             int numCols = rsmd.getColumnCount();
 
-            System.out.println(" ");
+            System.out.println("\n");
 
             // display column names;
             for (int i = 0; i < numCols; i++) {
@@ -533,13 +533,13 @@ public class textbased implements ActionListener {
 
             while (rs.next()) {
 
-                date = rs.getInt("Date");
+                date = rs.getInt("datePlayed");
                 System.out.printf("%-10.10s", date);
 
-                time = rs.getInt("Time");
+                time = rs.getInt("time");
                 System.out.printf("%-10.10s", time);
 
-                mode = rs.getString("Mode");
+                mode = rs.getString("modeid");
                 System.out.printf("%-10.10s", mode);
 
             }

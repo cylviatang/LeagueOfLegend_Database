@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="fixed 5/6 queries">
+    <list default="true" id="9beafe24-b785-474d-8013-e9657fe42652" name="Default Changelist" comment="getmatchinfo DONE OML">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/textbased.java" afterPath="$PROJECT_DIR$/src/textbased.java" />
     </list>
@@ -91,11 +91,11 @@
       <file leaf-file-name="textbased.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/textbased.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="516" column="36" lean-forward="true" selection-start-line="516" selection-start-column="36" selection-end-line="516" selection-end-column="36" />
+            <state relative-caret-position="299">
+              <caret line="535" column="33" lean-forward="true" selection-start-line="535" selection-start-column="33" selection-end-line="535" selection-end-column="33" />
               <folding>
-                <element signature="e#24482#24483#0" expanded="true" />
-                <element signature="e#24528#24529#0" expanded="true" />
+                <element signature="e#24491#24492#0" expanded="true" />
+                <element signature="e#24537#24538#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -531,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542601081644</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="getmatchinfo DONE OML">
+      <created>1542601807460</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1542601807460</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -634,7 +641,8 @@
     <MESSAGE value="fixed competitions lmao" />
     <MESSAGE value="Everything except get match info" />
     <MESSAGE value="fixed 5/6 queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed 5/6 queries" />
+    <MESSAGE value="getmatchinfo DONE OML" />
+    <option name="LAST_COMMIT_MESSAGE" value="getmatchinfo DONE OML" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -646,8 +654,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#24482#24483#0" expanded="true" />
-            <element signature="e#24528#24529#0" expanded="true" />
+            <element signature="e#24491#24492#0" expanded="true" />
+            <element signature="e#24537#24538#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -710,11 +718,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/textbased.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="516" column="36" lean-forward="true" selection-start-line="516" selection-start-column="36" selection-end-line="516" selection-end-column="36" />
+        <state relative-caret-position="299">
+          <caret line="535" column="33" lean-forward="true" selection-start-line="535" selection-start-column="33" selection-end-line="535" selection-end-column="33" />
           <folding>
-            <element signature="e#24482#24483#0" expanded="true" />
-            <element signature="e#24528#24529#0" expanded="true" />
+            <element signature="e#24491#24492#0" expanded="true" />
+            <element signature="e#24537#24538#0" expanded="true" />
           </folding>
         </state>
       </provider>
