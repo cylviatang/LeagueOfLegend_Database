@@ -258,6 +258,10 @@ commit;
 -- Competitions
 insert into Competitions values ('event1',2018,'NorthAmerica');
 insert into Competitions values ('event2',2017,'Korea');
+insert into Competitions values ('event3',2016,'NorthAmerica');
+insert into Competitions values ('event4',2012,'Korea');
+insert into Competitions values ('event5',2012,'Korea');
+insert into Competitions values ('event6',2016,'NorthAmerica');
 
 -- League_Employee1
 insert into League_Employee1 values (20000,'Respon1');
